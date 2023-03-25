@@ -1,6 +1,6 @@
 # Rust im Linux Kernel
 
-Folien und Beispiele zum [Vortrag auf den Chemnitzer Linux Tagen 2023](https://chemnitzer.linux-tage.de/2023/en/programm/beitrag/216)
+Folien und Beispiele zum [Vortrag zum Tag des offenen Hackspace am 25.03.2023 in der dezentrale Leipzig](https://dezentrale.space/posts/2023/03/tag-des-offenen-hackspace/)
 
 ## Present
 
