@@ -331,7 +331,7 @@ module! {
     license: "GPL v2",
 }
 
-struct RustCltModule { name: &'static CStr }
+struct ARustModule { name: &'static CStr }
 ```
 
 ---
@@ -355,7 +355,7 @@ impl kernel::Module for ARustModule {
 ### Unloading implementieren
 
 ```rust
-impl Drop for RustCltModule {
+impl Drop for ARustModule {
     fn drop(&mut self) {
         pr_info!("Goodbye from kernel module {}!",
                  self.name);
