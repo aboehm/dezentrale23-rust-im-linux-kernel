@@ -4,7 +4,7 @@
 
 Alexander Böhm
 
-Chemnitzer Linux Tage, 11.03.2023
+dezentrale, 25.03.2023
 
 ---
 
@@ -320,14 +320,14 @@ error: the feature `core_ffi_c` has been stable since 1.64.0
 
 ```rust
 // SPDX-License-Identifier: GPL-2.0
-//! Rust module for CLT 2023
+//! A Rust module
 use kernel::prelude::*;
 
 module! {
-    type: RustCltModule,
-    name: "rust_clt_module",
+    type: ARustModule,
+    name: "rust_module",
     author: "Alexander Böhm",
-    description: "Rust Module for CLT 2023",
+    description: "A Rust Module",
     license: "GPL v2",
 }
 
@@ -339,12 +339,12 @@ struct RustCltModule { name: &'static CStr }
 ### Initialisierung implementieren
 
 ```rust
-impl kernel::Module for RustCltModule {
+impl kernel::Module for ARustModule {
     fn init(
         name: &'static CStr,
         _module: &'static ThisModule
     ) -> Result<Self> {
-        pr_info!("Hello CLT 2023 from kernel module {name}!");
+        pr_info!("Hello dezentrale from kernel module {name}!");
         Ok(Self { name })
     }
 }
@@ -376,10 +376,10 @@ make LLVM=1 bzImage modules
 ### Modul ausprobieren
 
 ```
-[    1.023889] rust_clt_module: Hello CLT 2023 from kernel 
-               module rust_clt_module!
-[    1.025889] rust_clt_module: Goodbye from kernel module
-               rust_clt_module!
+[    1.023889] rust_module: Hello dezentrale from kernel 
+               module rust_module!
+[    1.025889] rust_module: Goodbye from kernel module
+               rust_module!
 ```
 
 ---
@@ -416,6 +416,16 @@ make LLVM=1 bzImage modules
 
 ---
 
+### Klint
+
+* Linter
+* Atomic Context
+* Mutex/SpinLock/RCU
+* Einhaltung von Zugriffsregeln
+* Bspw. wird Lock genutzt und wieder freigegeben
+
+---
+
 ### GCCRS
 
 <img src="media/gccrs-logo.png" width="33%">
@@ -443,7 +453,7 @@ make LLVM=1 bzImage modules
 <br/>
 
 Folien & Beispiele:
-[https://github.com/aboehm/CLT2023-rust-im-linux-kernel](aboehm/CLT2023-rust-im-linux-kernel)
+[github.com/aboehm/dezentrale23-rust-im-linux-kernel](https://github.com/aboehm/dezentrale23-rust-im-linux-kernel)
 
 </small>
 
@@ -465,3 +475,4 @@ Folien & Beispiele:
 * [Rust for Linux, Rust CTCFT 2021](https://rust-lang.github.io/ctcft/slides/2021-11-22_-_Rust_CTCFT_-_Rust_for_Linux.pdf)
 * [Heise: Three Questions and Answers: Rust for Linux](https://www.heise.de/hintergrund/Three-Questions-and-Answers-Rust-for-Linux-7532262.html)
 * [GCCRS Kompiler](https://github.com/Rust-GCC/gccrs)
+* [Klint: Compile-time Detection of Atomic Context Violations for Kernel Rust Code](https://www.memorysafety.org/blog/gary-guo-klint-rust-tools/)
